@@ -45,6 +45,14 @@ def initialize():
         for j in range(COLS):
             grid[i].append(Node(i, j))
 
+def generate_obstacle():
+    for i in range(ROWS):
+        for j in range(COLS):
+            n = random.random()
+            if n < 0.1:
+                grid[i][j].color = BLACK
+
+
 def draw_grid(rows, cols, size):
     for i in range(rows):
         pygame.draw.line(screen, GREY, (i*size, 0), (i*size, WIDTH))
@@ -59,7 +67,7 @@ def draw():
     for i in range(ROWS):
         for j in range(COLS):
             grid[i][j].node_draw(screen)
-            
+
     draw_grid(ROWS, COLS, SIZE)
 
     pygame.display.update()
