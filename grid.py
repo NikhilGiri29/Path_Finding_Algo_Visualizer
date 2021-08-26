@@ -34,6 +34,15 @@ class Node():
         self.visited = False
 
 
+grid = []
+
+def initialize():
+    
+    for i in range(ROWS):
+        grid.append([])
+        for j in range(COLS):
+            grid[i].append(Node(i, j))
+            
 def draw_grid(rows, cols, size):
     for i in range(rows):
         pygame.draw.line(screen, GREY, (i*size, 0), (i*size, WIDTH))
