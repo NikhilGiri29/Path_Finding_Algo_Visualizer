@@ -33,6 +33,8 @@ class Node():
         self.prev : Node = None
         self.visited = False
 
+    def node_draw(self, screen):
+        pygame.draw.rect(screen, self.color, (self.x, self.y, self.x + SIZE, self.y + SIZE))
 
 grid = []
 
@@ -42,7 +44,7 @@ def initialize():
         grid.append([])
         for j in range(COLS):
             grid[i].append(Node(i, j))
-            
+
 def draw_grid(rows, cols, size):
     for i in range(rows):
         pygame.draw.line(screen, GREY, (i*size, 0), (i*size, WIDTH))
@@ -54,7 +56,10 @@ def draw():
     screen.fill(WHITE)
     pygame.draw.rect(screen, WHITE, (0, 0, WIDTH, WIDTH))
 
-    
+    for i in range(ROWS):
+        for j in range(COLS):
+            grid[i][j].node_draw(screen)
+            
     draw_grid(ROWS, COLS, SIZE)
 
     pygame.display.update()
