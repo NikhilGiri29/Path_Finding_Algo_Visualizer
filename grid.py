@@ -21,7 +21,6 @@ GREY = (128, 128, 128)
 screen = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption('Path Finder')
 
-
 class Node():
     def __init__(self, row, col):
         self.row = row
@@ -32,7 +31,7 @@ class Node():
         self.distance = float('inf')
         self.prev : Node = None
         self.visited = False
-
+    
     def node_draw(self, screen):
         pygame.draw.rect(screen, self.color, (self.x, self.y, self.x + SIZE, self.y + SIZE))
 
@@ -53,6 +52,7 @@ def generate_obstacle():
                 grid[i][j].color = BLACK
 
 
+
 def draw_grid(rows, cols, size):
     for i in range(rows):
         pygame.draw.line(screen, GREY, (i*size, 0), (i*size, WIDTH))
@@ -63,16 +63,23 @@ def draw_grid(rows, cols, size):
 def draw():
     screen.fill(WHITE)
     pygame.draw.rect(screen, WHITE, (0, 0, WIDTH, WIDTH))
-
+    
     for i in range(ROWS):
         for j in range(COLS):
             grid[i][j].node_draw(screen)
-
+    
     draw_grid(ROWS, COLS, SIZE)
 
     pygame.display.update()
 
 
+initialize()
+generate_obstacle()
 
 while(True):
     draw()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
