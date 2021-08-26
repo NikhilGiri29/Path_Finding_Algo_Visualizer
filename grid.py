@@ -22,6 +22,16 @@ screen = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption('Path Finder')
 
 
+class Node():
+    def __init__(self, row, col):
+        self.row = row
+        self.col = col
+        self.x = col*SIZE
+        self.y = row*SIZE
+        self.color = WHITE
+        self.distance = float('inf')
+        self.prev : Node = None
+        self.visited = False
 
 
 def draw_grid(rows, cols, size):
