@@ -82,14 +82,22 @@ def draw():
 
     pygame.display.update()
 
+open_list = []
 
-initialize()
-generate_obstacle()
-start_end()
-while(True):
-    draw()
+if __name__ == "__main__":
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
+    initialize()
+    generate_obstacle(0.4)
+    start_node, end_node = start_end()
+    open_list.append(start_node)
+    exit = False
+    start_node.distance = 0
+    while(len(open_list)):
+        #print("Heyo!!!")
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+
+        draw()
