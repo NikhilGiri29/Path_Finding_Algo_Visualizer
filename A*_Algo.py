@@ -87,7 +87,7 @@ open_list = []
 if __name__ == "__main__":
 
     initialize()
-    generate_obstacle(0.4)
+    generate_obstacle()
     start_node, end_node = start_end()
     open_list.append(start_node)
     exit = False
