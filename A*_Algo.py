@@ -52,6 +52,16 @@ def generate_obstacle():
                 grid[i][j].color = BLACK
 
 
+def start_end():
+
+    start_color = BLUE
+    end_color = RED
+    start_node = grid[0][0]
+    end_node = grid[ROWS-1][COLS-1]
+
+    start_node.color = start_color
+    end_node.color = end_color
+    return start_node, end_node
 
 def draw_grid(rows, cols, size):
     for i in range(rows):
@@ -75,7 +85,7 @@ def draw():
 
 initialize()
 generate_obstacle()
-
+start_end()
 while(True):
     draw()
 
