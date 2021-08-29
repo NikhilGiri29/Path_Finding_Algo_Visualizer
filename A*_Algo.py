@@ -90,6 +90,26 @@ def is_safe_node(row , col):
             return True
     return False
 
+def add_neighbour_node(row, col):
+    array = []
+    ##check right
+    if (is_safe_node(row, col+1)):
+        array.append(grid[row][col+1])
+    
+    ##check down
+    if (is_safe_node(row +1, col)):
+        array.append(grid[row+1][col])
+
+    ##check left
+    if (is_safe_node(row, col-1)):
+        array.append(grid[row][col-1])
+    
+    ##check up
+    if (is_safe_node(row -1, col)):
+        array.append(grid[row-1][col])
+    
+    return array
+    
 if __name__ == "__main__":
 
     initialize()
