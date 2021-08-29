@@ -109,7 +109,12 @@ def add_neighbour_node(row, col):
         array.append(grid[row-1][col])
     
     return array
-    
+
+def heuristic(alpha : Node, end_node : Node):
+    x = abs(alpha.x - end_node.x)
+    y = abs(alpha.y - end_node.y)
+    return alpha.distance * (x + y)
+
 if __name__ == "__main__":
 
     initialize()
