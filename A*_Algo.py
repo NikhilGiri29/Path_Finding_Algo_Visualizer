@@ -132,3 +132,8 @@ if __name__ == "__main__":
 
 
         draw()
+
+        for node in open_list:
+            if heuristic(node, end_node) < heuristic(current_node, end_node):
+                current_node = node
+                current_index = open_list.index(node)
