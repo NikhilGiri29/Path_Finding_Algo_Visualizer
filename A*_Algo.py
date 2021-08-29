@@ -84,6 +84,12 @@ def draw():
 
 open_list = []
 
+def is_safe_node(row , col):
+    if (row >=0 and col  >=0  and row < ROWS and col < COLS):
+        if grid[row][col].color != BLACK:
+            return True
+    return False
+
 if __name__ == "__main__":
 
     initialize()
