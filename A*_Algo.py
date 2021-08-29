@@ -132,8 +132,36 @@ if __name__ == "__main__":
 
 
         draw()
-
+        
+        current_node = open_list[0]
+        current_index = 0
+        
         for node in open_list:
             if heuristic(node, end_node) < heuristic(current_node, end_node):
                 current_node = node
                 current_index = open_list.index(node)
+
+        if (current_node.y == end_node.y and current_node.x == end_node.x):
+            exit = True
+            print("Path Found")
+            break
+
+        
+        
+        #print("Kayo",current_node.row, current_node.col)
+        #print(add_neighbour_node(current_node.row, current_node.col))
+        for next_node in add_neighbour_node(current_node.row, current_node.col):
+            #print("Loop enter!!!")
+            if current_node.distance + 1 < next_node.distance:
+                grid[next_node.row][next_node.col].distance = current_node.distance + 1
+                next_node.distance = current_node.distance + 1
+                open_list.append(next_node)
+
+                grid[next_node.row][next_node.col].prev = current_node
+                next_node.open_node()
+        
+        open_list.pop(current_index)
+        current_node.close_node()
+        current_node.visited = True
+        start_end()
+        
